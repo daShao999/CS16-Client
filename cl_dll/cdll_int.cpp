@@ -1,9 +1,9 @@
 /***
 *
 *	Copyright (c) 1996-2002, Valve LLC. All rights reserved.
-*	
-*	This product contains software technology licensed from Id 
-*	Software, Inc. ("Id Technology").  Id Technology (c) 1996 Id Software, Inc. 
+*
+*	This product contains software technology licensed from Id
+*	Software, Inc. ("Id Technology").  Id Technology (c) 1996 Id Software, Inc.
 *	All Rights Reserved.
 *
 *   Use, distribution, and modification of this source code and/or resulting
@@ -44,7 +44,7 @@ void IN_Commands( void );
 void Input_Shutdown (void);
 
 /*
-========================== 
+==========================
     Initialize
 
 Called when the DLL is first loaded.
@@ -198,7 +198,7 @@ int DLLEXPORT HUD_VidInit( void )
 	HUD_Init
 
 Called whenever the client connects
-to a server.  Reinitializes all 
+to a server.  Reinitializes all
 the hud variables.
 ==========================
 */
@@ -339,6 +339,10 @@ int DLLEXPORT HUD_GetRenderInterface( int version, render_api_t *renderfuncs, re
 	// we didn't send callbacks to engine, because we don't use it
 	// *callback = renderInterface;
 
+// fix?
+#ifdef XASH_EMSCRIPTEN
+    return true;
+#endif
 	// we have here a Host_Error, so check Xash for version
 	if( g_iXash < MIN_XASH_VERSION )
 	{
